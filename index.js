@@ -8,10 +8,10 @@ var toLang = "pt";
 var clientId = "FREE_TRIAL_ACCOUNT";
 var clientSecret = "PUBLIC_SECRET";
 
-client.on("ready", () => {
+/*client.on("ready", () => {
     // custom console, loggin
     console.log("Logged in as ", client.user.tag);
-});
+});*/
  
 client.on("message", message => {
     if(message.author.bot || message.channel.id !== "CHANNEL ID") {
@@ -23,7 +23,7 @@ client.on("message", message => {
     var jsonPayload = JSON.stringify({
         "fromLang": fromLang,
         "toLang": toLang,
-        text: text
+        "text": text
     });
 
     var options = {
@@ -44,8 +44,6 @@ client.on("message", message => {
     request.end(jsonPayload);
     
     request.on("response", function (response) {
-        // custom console, response
-        console.log("Status code: " + response.statusCode);
 
         response.setEncoding("utf8");
         response.on("data", function (chunk) {
@@ -65,6 +63,6 @@ client.on("message", message => {
             message.channel.send({embed});
         });
     });
-})
+});
 //API COM TODAS OS IDIOMAS SUPORTADOS http://api.whatsmate.net/v1/translation/supported-codes
 client.login("TOKEN");
