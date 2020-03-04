@@ -13,7 +13,7 @@ var clientSecret = "PUBLIC_SECRET";
     console.log("Logged in as ", client.user.tag);
 });*/
  
-client.on("message", message => {
+client.on("message", (message) => {
     if(message.author.bot || message.channel.id !== "CHANNEL ID") {
         return;
     }
