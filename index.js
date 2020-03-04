@@ -9,7 +9,8 @@ var clientId = "FREE_TRIAL_ACCOUNT";
 var clientSecret = "PUBLIC_SECRET";
 
 client.on("ready", () => {
-  console.log("Logged in as ", client.user.tag);
+    // custom console, loggin
+    console.log("Logged in as ", client.user.tag);
 });
  
 client.on("message", message => {
@@ -22,7 +23,7 @@ client.on("message", message => {
     var jsonPayload = JSON.stringify({
         "fromLang": fromLang,
         "toLang": toLang,
-        "text": text
+        text: text
     });
 
     var options = {
@@ -43,14 +44,15 @@ client.on("message", message => {
     request.end(jsonPayload);
     
     request.on("response", function (response) {
+        // custom console, response
         console.log("Status code: " + response.statusCode);
 
         response.setEncoding("utf8");
         response.on("data", function (chunk) {
 
-            if(text == chunkhunk) {
+            if(text === chunk) {
                 return;
-            };
+            }
 
             const embed = new Discord.RichEmbed()
             .setTitle("Criado por Felipe GM")
